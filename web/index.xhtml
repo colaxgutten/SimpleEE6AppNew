@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width = device-width, initial-scale = 1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="login.css"/>
+    <body class="background">
+        <f:view class="container2">
+            <div class="row">
+                <h:form class="form-login">
+                    <h4>Welcome!</h4>
+                    <h5 class="username">Username</h5>
+                    <h:inputText id="userName" class="form-control" value="#{AuctionUserView.auctionUser.username}"/>
+                    <h5 class="password">Password</h5>
+                    <br/>
+                    <div class="wrapper">
+                        <h:inputSecret id="userPassword" class="form-control input-sm chat-input" value="#{AuctionUserView.auctionUser.password}"/>
+                        <span class="group-btn">  
+                            <h:commandButton class="btn btn-success" action="#{AuctionUserView.authenticate}" value="Login"/>
+                            <h:commandButton class="btn btn-primary" action="#{AuctionUserView.register}" value="Register"/>
+                        </span>
+                    </div>
+                </h:form>
+            </div>
+        </f:view>
+    </body>
+</html>

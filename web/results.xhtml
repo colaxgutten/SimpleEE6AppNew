@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition template="mastertemplate.xhtml" 
+     xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width = device-width, initial-scale = 1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"/>
+    <ui:define name="content">
+        <h:form>
+        <h:dataTable headerClass="list-header-left" value="#{BidsView.searchForBidsOnProductNames}" var="item" border="2" cellspacing="1" cellpadding="1" >
+                <h:column>
+                    <f:facet name="header">Seller</f:facet>
+                    #{item.product.auctionUser.username}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Product</f:facet>
+                    #{item.product.productName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Current Bid</f:facet>
+                    #{item.bid}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Time</f:facet>
+                    #{BidsView.getTimeLeft(item)}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Current Bidder</f:facet>
+                    #{item.auctionUser.username}
+                </h:column>
+                <h:column>                 
+                    <h:commandButton value="TODO BID" action="#{BidsView.bid(item)}"/>                  
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        <h:form>   
+        <h:commandButton value="Back" action="theend"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

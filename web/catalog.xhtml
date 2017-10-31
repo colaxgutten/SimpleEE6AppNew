@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition template="mastertemplate.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Catalog page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width = device-width, initial-scale = 1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="login.css"/>
+    <ui:define name="content">
+        <body class="background">
+            <div class="container">
+                    <h:form class="center">
+                        <h:commandButton action="#{ProductCatalogView.createCatalog}" value="create catalog"/>
+                        <h:dataTable rowClasses="odd,even" headerClass="list-header-left" value="#{AuctionUserView.auctionUser.productCatalog.products}" var="item" border="2" cellspacing="1" cellpadding="1" style="table-layout: fixed">
+                            <h:column>
+                                <f:facet name="header">Seller</f:facet>
+                                    #{item.auctionUser.username}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Product</f:facet>
+                                    #{item.productName}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Contact Info</f:facet>
+                                    #{item.contactInformation}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Rating 0-5</f:facet>
+                                    #{item.sellersRating}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Feedback</f:facet>
+                                    #{item.feedBack}
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                <h:form>
+                    <h:commandButton value="publish" action="#{ProductCatalogView.publish}">
+                        <f:actionListener binding="#{BidsView.publish(event)}"/>
+                    </h:commandButton>
+                </h:form>
+                <h:form>
+                    <h:selectOneMenu value="#{ProductView.product.id}" onclick="">
+                        <f:selectItems value="#{AuctionUserView.auctionUser.products}" var="selectedproduct" itemLabel="#{selectedproduct.productName}" itemValue="#{selectedproduct.id}"/>
+                        <f:ajax listener="#{ProductView.test}"/>
+                    </h:selectOneMenu>
+                    <h:commandButton action="#{ProductView.addToCatalog}" value="Add product to catalog"/>
+                </h:form>
+                <h:form>
+                    <h:outputLabel value="Product name: "/><h:inputText value="#{ProductView.product.productName}"/>
+                    <h:outputLabel value="Starting Bid: "/><h:inputText value="#{ProductView.product.startingBid}"/>
+                    <h:commandButton value="Create product" action="#{ProductView.createProduct}"/>
+                    <h:commandButton class="btn btn-basic" value="Back" action="theend"/>
+                </h:form> 
+            </div>
+        </body>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width = device-width, initial-scale = 1"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="topnav.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>
+            <ui:insert name="title"></ui:insert>
+        </title>
+    </h:head>
+    <h:body>
+        <ui:insert name="header">
+                <div class="topnav" id="myTopnav">
+                    <a href="theend.xhtml">Frontpage</a>
+                    <a href="catalog.xhtml">Catalog</a>
+                </div>
+        </ui:insert>
+        <ui:insert name="content">
+        </ui:insert>
+        <ui:insert name="footer"></ui:insert>
+        <ui:insert name="scripts"></ui:insert>
+    </h:body>
+</html>
